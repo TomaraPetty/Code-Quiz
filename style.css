@@ -1,3 +1,21 @@
+/* The quiz header */
+.jumbotron {
+  background-color: rgb(51, 50, 50)!important;
+  color: whitesmoke;
+  text-align: center;
+  padding: 15px!important;
+}
+
+/* Start quiz button */
+.center {
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

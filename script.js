@@ -1,7 +1,4 @@
-// Start button - add event listener 
 // Score keeper - activity 11 increment/decrement & activity 18 shopping cart 
-// Timer starts and activates first question activity 8 - timer + 29 timer app 
-// End quiz when all questions are answered or timer reaches 0 - should go through TODO 25 & 26
 // Save initials and score - potentially activity 22 for local storage signUpButton and recall info.
 // reset when quiz is over score gets recorded and then set back to 0 
 
@@ -15,7 +12,8 @@ const choiceC = $('#C');
 const choiceD = $('#D');
 const timeEl = $("#time");
 
-var secondsLeft = 30;
+
+// var secondsLeft = numberOfQuestions * 20;
 var score = 0;
 var timerInterval;
 
@@ -109,8 +107,12 @@ var questions = [
   }
 ]
 
-//questions.forEach(renderQuestion);
+// number of questions determins number of seconds to take quiz. 
+var numberOfQuestions = Object.keys(questions).length;
+var secondsLeft = numberOfQuestions * 10;
+console.log(Object.keys(questions).length);
 
+//questions.forEach(renderQuestion);
 let lastQuestion = questions.length -1;
 let currentQuestion = 0;
 
@@ -129,10 +131,10 @@ function checkAnswer(answer){
   if (answer == questions[currentQuestion].correct) {
     //answer is correct
     score++;
-    $("#result").text("You are correct!"); 
+    $("#result").text("Your answer was correct!"); 
   } else {
     //answer is incorrect 
-    $("#result").text("Your answer is incorrect! You loose 5 seconds off of your time.");
+    $("#result").text("Your answer was incorrect! You lost 5 seconds off of your time.");
     secondsLeft-=5;
     $(timeEl).text(secondsLeft);
   }
@@ -146,17 +148,19 @@ function checkAnswer(answer){
 function endQuiz(){
   console.log("Hit end quiz function.");
   clearInterval(timerInterval);
+  //give score 
+  alert("You got " + score + " out of " + questions.length + " correct.");
+  //close modal
+  modal.style.display = "none";
+  prompt("Enter your initials to save your high score.");
 }
 
-// start.addEventListener("click", startQuiz);
-
-
-// start.style.display = "none";
-// renderQuestion();
-// quiz.style.display = "block";
-
-
+// var user = {
+//     initials: initialsInput.value.trim(),
+//     userScore: userScore.value.trim()
+//   };
 
 // // give user their final score. 
 // alert("You got " + score + " out of " + questions.length + " correct.");
-// }
+// prompt("Enter your initials to save your score.");
+

@@ -1,53 +1,47 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
 
 
     <!-- Trigger/Open The Modal -->
-<button id="myBtn">Start The Quiz</button>
+    <h1 class="jumbotron">Coding Quiz!</h1>
+    <button id="myBtn" type="button" class="btn btn-info center">Start The Quiz</button>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="question">
-    <h3>Question: </h3>
-    </div>
-    <div id="choices">
-        <button class="choice" id="A" onclick="checkAnswer('A')">A. </button>
-        <button class="choice" id="B" onclick="checkAnswer('B')">B. </button>
-        <button class="choice" id="C" onclick="checkAnswer('C')">C. </button>
-        <button class="choice" id="D" onclick="checkAnswer('D')">D. </button>
-    </div>
-    <div id="result"></div>
-  </div>
-
-</div>
-<div id="timer">Time: <span id="time"> </span></div>
-    
-    <!-- <div id="quiz">
-        <h1 class="jumbotron">Time to take the quiz!</h1>
-    <h1 class="time"></h1>
-    <div id="main"></div>
-    <button id="startQuizBtn" type="button" class="btn btn-info center">Start Quiz</button>
-    <br>
-    <div id="questionsPrompt"></div>
-    <div id="questionsAlert"></div>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- timer -->
+            <div id="timer">Time: <span id="time"> </span></div>
+            <br>
+            <!-- questions -->
+            <div id="question">
+                <h3>Question: </h3>
+            </div>
+            <div id="choices">
+                <button class="choice" id="A" onclick="checkAnswer('A')">A. </button>
+                <button class="choice" id="B" onclick="checkAnswer('B')">B. </button>
+                <button class="choice" id="C" onclick="checkAnswer('C')">C. </button>
+                <button class="choice" id="D" onclick="checkAnswer('D')">D. </button>
+            </div>
+            <div id="result"></div>
+        </div>
 
     </div>
-    <button id="submit" type="button" class="btn btn-success center">Submit Quiz</button>
-    <div id="results"></div> -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+
+</html>
