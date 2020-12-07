@@ -14,26 +14,45 @@
 
     <!-- Trigger/Open The Modal -->
     <h1 class="jumbotron">Coding Quiz!</h1>
-    <button id="myBtn" type="button" class="btn btn-info center">Start The Quiz</button>
+    <button id="quizBtn" type="button" class="btn btn-warning center">Start The Quiz</button>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal">
+    <div id="quizModal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <!-- timer -->
-            <div id="timer">Time: <span id="time"> </span></div>
+            <div id="timer">Time remaining to finish the quiz: <span id="time"> </span></div>
             <br>
             <!-- questions -->
             <div id="question">
                 <h3>Question: </h3>
             </div>
             <div id="choices">
-                <button class="choice" id="A" onclick="checkAnswer('A')">A. </button>
-                <button class="choice" id="B" onclick="checkAnswer('B')">B. </button>
-                <button class="choice" id="C" onclick="checkAnswer('C')">C. </button>
-                <button class="choice" id="D" onclick="checkAnswer('D')">D. </button>
+                <button class="choice btn btn-primary" id="A" onclick="checkAnswer('A')">A. </button> <br>
+                <button class="choice btn btn-primary" id="B" onclick="checkAnswer('B')">B. </button> <br>
+                <button class="choice btn btn-primary" id="C" onclick="checkAnswer('C')">C. </button> <br>
+                <button class="choice btn btn-primary" id="D" onclick="checkAnswer('D')">D. </button> <br>
+            </div>
+            <div id="result"></div>
+        </div>
+
+    </div>
+    <div id="scoreModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <!-- high scors -->
+            <div id="scores">
+                <h3>High Scores: </h3>
+            </div>
+            <div id="scoreHistory">
+                <ul>
+                    <li id="initials">Initials: </li>
+                    <li id="score">Score: </li>
+                </ul>
             </div>
             <div id="result"></div>
         </div>

@@ -33,10 +33,10 @@ function setTime() {
 }
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("quizModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("quizBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -110,7 +110,6 @@ var questions = [
 // number of questions determins number of seconds to take quiz. 
 var numberOfQuestions = Object.keys(questions).length;
 var secondsLeft = numberOfQuestions * 10;
-console.log(Object.keys(questions).length);
 
 //questions.forEach(renderQuestion);
 let lastQuestion = questions.length -1;
@@ -119,7 +118,7 @@ let currentQuestion = 0;
 function renderQuestion() {
   let q = questions[currentQuestion];
   $('#question').empty().append("<h4>" + q.question + "</h4>");
-  $('#A').text("A. " + q.choiceA);
+  $('#A').text("A. " + q.choiceA + "\n");
   $('#B').text("B. " + q.choiceB);
   $('#C').text("C. " + q.choiceC);
   $('#D').text("D. " + q.choiceD);
@@ -152,7 +151,8 @@ function endQuiz(){
   alert("You got " + score + " out of " + questions.length + " correct.");
   //close modal
   modal.style.display = "none";
-  prompt("Enter your initials to save your high score.");
+  var initials = prompt("Enter your initials to save your high score.");
+  localStorage.setItem("score", score);
 }
 
 // var user = {

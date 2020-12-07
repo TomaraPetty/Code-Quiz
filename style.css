@@ -1,12 +1,23 @@
+/* background image */
+body {
+  background-image: url("codingImage.jpg");
+  background-color: #cccccc;
+}
+
+/* quiz button font color */
+#quizBtn {
+  color: darkblue!important;
+}
+
 /* The quiz header */
 .jumbotron {
-  background-color: rgb(51, 50, 50)!important;
+  background-color: rgb(2, 7, 49)!important;
   color: whitesmoke;
   text-align: center;
   padding: 15px!important;
 }
 
-/* Start quiz button */
+/* Start quiz button center */
 .center {
   margin: 0;
   position: absolute;
@@ -14,6 +25,10 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.btn {
+  padding: 5px!important;
 }
 
 /* The Modal (background) */
