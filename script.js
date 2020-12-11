@@ -19,11 +19,11 @@ var timerInterval;
 
 // set timer 
 function setTime() {
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     secondsLeft--;
     $(timeEl).text(secondsLeft);
 
-    if(secondsLeft <= 0) {
+    if (secondsLeft <= 0) {
       secondsLeft = 0;
       $(timeEl).text(secondsLeft);
       endQuiz();
@@ -42,26 +42,26 @@ var btn = document.getElementById("quizBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
   setTime();
   renderQuestion();
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
@@ -69,7 +69,7 @@ window.onclick = function(event) {
 
 // Questions array of objects 
 var questions = [
-  { 
+  {
     question: "Arrays in JavaScript can be used to store _____.",
     choiceA: "Numbers and strings",
     choiceB: "Other arrays",
@@ -77,28 +77,32 @@ var questions = [
     choiceD: "All of the above",
     correct: "D"
   },
-  { question: "The condition in an if / else statement is enclosed within ____.",
+  {
+    question: "The condition in an if / else statement is enclosed within ____.",
     choiceA: "Quotes",
     choiceB: "Curly brackets",
     choiceC: "Parentheses",
     choiceD: "Square brackets",
-    correct: "D" 
+    correct: "D"
   },
-  { question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+  {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choiceA: "JavaScript",
     choiceB: "Terminal / bash",
     choiceC: "For loops",
     choiceD: "Console.log",
     correct: "D"
   },
-  { question: "Commonly used data types DO NOT include:",
+  {
+    question: "Commonly used data types DO NOT include:",
     choiceA: "Strings",
     choiceB: "Booleans",
     choiceC: "Alerts",
     choiceD: "Numbers",
     correct: "C"
   },
-  { question: "String values must be enclosed within _____ when being assigned to variables.",
+  {
+    question: "String values must be enclosed within _____ when being assigned to variables.",
     choiceA: "Commas",
     choiceB: "Curly brackets",
     choiceC: "Quotes",
@@ -112,7 +116,7 @@ var numberOfQuestions = Object.keys(questions).length;
 var secondsLeft = numberOfQuestions * 10;
 
 //questions.forEach(renderQuestion);
-let lastQuestion = questions.length -1;
+let lastQuestion = questions.length - 1;
 let currentQuestion = 0;
 
 function renderQuestion() {
@@ -126,15 +130,15 @@ function renderQuestion() {
 //renderQuestion();
 
 // check answer 
-function checkAnswer(answer){
+function checkAnswer(answer) {
   if (answer == questions[currentQuestion].correct) {
     //answer is correct
     score++;
-    $("#result").text("Your answer was correct!"); 
+    $("#result").text("Your answer was correct!");
   } else {
     //answer is incorrect 
     $("#result").text("Your answer was incorrect! You lost 5 seconds off of your time.");
-    secondsLeft-=5;
+    secondsLeft -= 5;
     $(timeEl).text(secondsLeft);
   }
   currentQuestion++;
@@ -144,23 +148,45 @@ function checkAnswer(answer){
     renderQuestion();
   }
 }
-function endQuiz(){
+function endQuiz() {
   console.log("Hit end quiz function.");
   clearInterval(timerInterval);
   //give score 
   alert("You got " + score + " out of " + questions.length + " correct.");
   //close modal
   modal.style.display = "none";
-  var initials = prompt("Enter your initials to save your high score.");
+  prompt("Enter your initials to save your high score.");
   localStorage.setItem("score", score);
+  scoreModal.style.display = "block";
 }
 
-// var user = {
-//     initials: initialsInput.value.trim(),
-//     userScore: userScore.value.trim()
-//   };
+// END OF GAME - SAVE HIGH SCORES TO LOCAL STORAGE
+const userInitials = document.getElementById('initials');
+const saveScoreBtn = document.getElementById('saveScoreBtn');
+const finalScore = document.getElementById('finalScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
 
-// // give user their final score. 
-// alert("You got " + score + " out of " + questions.length + " correct.");
-// prompt("Enter your initials to save your score.");
+const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+const MAX_HIGH_SCORES = 5;
+
+finalScore.innerText = mostRecentScore;
+userInitials.addEventLitener('keyup', () => {
+  saveScoreBtn.disbled = !userInitials.value;
+});
+
+saveHighscore = e => {
+  console.log('clicked the save button!');
+  e.preventDefault();
+
+  const score = {
+    score: mostRecentScore.value.trim(),
+    initials: userInitials.value.trim()
+  };
+  
+  highScores.push(score);
+  highScores.sort((a, b) => b.score - a.score);
+  
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+};
 
