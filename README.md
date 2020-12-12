@@ -16,3 +16,5 @@ The Code-Quiz will test the users coding knowledge. User will be asked 5 multipl
 * When the quiz questions are finished the first module will close and the second module will open.
 * Second module offers the user to save their high score and view the top scores.
 * After saving the user has the option to take the quiz again which clears the quiz and starts over.
+
+<img src="./codequiz.gif">
