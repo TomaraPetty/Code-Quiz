@@ -1,6 +1,6 @@
 # Code-Quiz
 
-<a href="https://tomararuth.github.io/Code-Quiz/">Click here to try the quiz here!</a>
+<a href="https://tomarapetty.github.io/Code-Quiz/">Click here to try the quiz here!</a>
 
 # Overview
 The Code-Quiz will test the users coding knowledge. User will be asked 5 multiple choice questions. They are granted 10 seconds per question to get through the quiz, 50 seconds total. If they answer a question wrong then they loose 5 seconds off of their time. At the end of the quiz they can enter their initials and save their high score. The results from the top scores will be stored in local storage and ranked in order.  
