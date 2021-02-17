@@ -1,7 +1,3 @@
-// Score keeper - activity 11 increment/decrement & activity 18 shopping cart 
-// Save initials and score - potentially activity 22 for local storage signUpButton and recall info.
-// reset when quiz is over score gets recorded and then set back to 0 
-
 // Select elements 
 const start = $('#start');
 const quiz = $('#quiz');
@@ -51,13 +47,6 @@ btn.onclick = function () {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -155,15 +144,15 @@ function endQuiz() {
   alert("You got " + score + " out of " + questions.length + " correct.");
   //close modal
   modal.style.display = "none";
-  prompt("Enter your initials to save your high score.");
+  // prompt("Enter your initials to save your high score.");
   localStorage.setItem("score", score);
   scoreModal.style.display = "block";
 }
 
 // END OF GAME - SAVE HIGH SCORES TO LOCAL STORAGE
-const userInitials = document.getElementById('initials');
-const saveScoreBtn = document.getElementById('saveScoreBtn');
-const finalScore = document.getElementById('finalScore');
+const saveScore = $('#saveScoreBtn');
+const userInitials = $('#initials');
+const finalScore = $('#finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
@@ -171,22 +160,23 @@ const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 const MAX_HIGH_SCORES = 5;
 
 finalScore.innerText = mostRecentScore;
-userInitials.addEventLitener('keyup', () => {
-  saveScoreBtn.disbled = !userInitials.value;
-});
+// userInitials.addEventLitener('keyup', () => {
+//   saveScoreBtn.disbled = !userInitials.value;
+// });
 
-saveHighscore = e => {
-  console.log('clicked the save button!');
+saveScore.on("click", (e) => {
   e.preventDefault();
+  console.log('clicked the save button!')
+    
 
-  const score = {
-    score: mostRecentScore.value.trim(),
-    initials: userInitials.value.trim()
-  };
+    // const score = {
+    //   score: score.value.trim(),
+    //   initials: userInitials.value.trim()
+    // };
+  });
+
   
   highScores.push(score);
   highScores.sort((a, b) => b.score - a.score);
   
   localStorage.setItem('highScores', JSON.stringify(highScores));
-};
-
