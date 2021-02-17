@@ -137,6 +137,12 @@ function checkAnswer(answer) {
     renderQuestion();
   }
 }
+
+const saveScore = $('#saveScoreBtn');
+const userInitials = $('#initials');
+const finalScore = $('#finalScore');
+const mostRecentScore = localStorage.getItem('mostRecentScore');
+
 function endQuiz() {
   console.log("Hit end quiz function.");
   clearInterval(timerInterval);
@@ -145,21 +151,16 @@ function endQuiz() {
   //close modal
   modal.style.display = "none";
   // prompt("Enter your initials to save your high score.");
-  localStorage.setItem("score", score);
+  // localStorage.setItem("score", score);
   scoreModal.style.display = "block";
 }
 
 // END OF GAME - SAVE HIGH SCORES TO LOCAL STORAGE
-const saveScore = $('#saveScoreBtn');
-const userInitials = $('#initials');
-const finalScore = $('#finalScore');
-const mostRecentScore = localStorage.getItem('mostRecentScore');
-
 const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 const MAX_HIGH_SCORES = 5;
 
-finalScore.innerText = mostRecentScore;
+$(finalScore).text("Score: " + score);
 // userInitials.addEventLitener('keyup', () => {
 //   saveScoreBtn.disbled = !userInitials.value;
 // });
